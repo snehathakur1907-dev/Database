@@ -1,6 +1,6 @@
 #1.	Create a database named dbemp and switch to it.
-create database dbemp1;
-use dbemp1;
+create database dbemp;
+use dbemp;
 
 #2.	Create an employee table with appropriate data 
 #types and constraints for employee details.
@@ -23,7 +23,7 @@ EmployeeID ,FirstName ,LastName ,Gender ,DateofBirth ,
 Designation ,DepartmentName ,ManagerId ,JoinedDate ,Salary 
 ) values(
 '002','Sneha','Thakur','F','1996-04-02','Engineer',
-'Software engineering','','2022-11-02','5000000000'
+'Software engineering','','2022-11-02','500000'
 ),(
 '005','Bishal','Thakur','M','2000-04-02','Manager',
 'Software engineering','','2025-11-02','9000000');
@@ -33,7 +33,7 @@ select * from employee;
 #EmployeeID is 003.
 update  employee 
 set Gender = 'M' 
-where EmployeeID = '003';
+where EmployeeID = '002';
 
 #5.	Display the first name, current date,
 #date of birth, and age of 
@@ -42,7 +42,7 @@ select FirstName ,
 CURDATE() as CurrentDate,DateofBirth,
 timestampdiff(YEAR,DateofBirth,CURDATE()) as age
 from employee where 
-timestampdiff(YEAR,DateofBirth,CURDATE()) > 20;
+timestampdiff(YEAR,DateofBirth,CURDATE()) > 25;
 
 #6.	Write a query to find the oldest employee
 select * from employee 
@@ -65,6 +65,24 @@ from employee Group By DepartmentName;
 #10.	List the employees who act as managers .
 select * from employee where
 EmployeeID in (select ManagerID from employee);
+
+UPDATE employee SET
+FirstName = 'ANJALI'
+WHERE EmployeeID = '002';
+
+select * from Employee 
+where Firstname like 'S%';
+select * from Employee
+where Firstname like '%r';
+
+
+select orders.orderId,
+customer.customerId, orders.orderdate
+from orders, customer 
+where orders.customerId = customer.customerId;
+
+
+
 
 
 
